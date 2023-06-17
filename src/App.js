@@ -1,15 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Home from './page/Home/Footer/Navebar/Home'
-import Navebar from './page/Home/Footer/Navebar/Navebar';
-import Footer from './page/Home/Footer/Navebar/Footer';
+import router from './router/Router'
+import { RouterProvider } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-       <Navebar></Navebar>
-       <Home></Home>
-       <Footer></Footer>
+     <RouterProvider router={router}/>
     </div>
   );
 }
