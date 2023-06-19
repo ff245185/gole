@@ -26,7 +26,7 @@ const Login = () => {
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                             <label className='label'>
-                         <Link to="/sining" href="#" className="label-text-alt link link-hover text-primary">create account</Link>
+                         <Link to="/sining" className="label-text-alt link link-hover text-primary">create account</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">

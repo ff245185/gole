@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import app from '../firebase/Firebase.config';
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged} from '../firebase/Firebase.config/auth'
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged, getAuth,signOut} from 'firebase/auth'
+import { createContext } from 'react';
 export const AuthContext = createContext()
 const auth = getAuth(app)
-const AuthProvider = ({childrebn}) => {
+const AuthProvider = ({children}) => {
 
        const [user,setUser] = useState(null)
-       const [loding,setLoding] = useState(null)
+       const [loding,setLoding] = useState(true)
 
 
        const createUserWithEmailAndPass = (email,password) =>{
@@ -26,7 +27,7 @@ const AuthProvider = ({childrebn}) => {
        useEffect(()=>{
            const unSubscribes = onAuthStateChanged(auth,  currentUser=>{
             setLoding(currentUser);
-            setLoding(false);
+        
            },)
            return()=>{
                  unSubscribes();
@@ -34,6 +35,7 @@ const AuthProvider = ({childrebn}) => {
        },[])
    const authInfo ={
     loding,
+    setUser,
     user,
     logInWithEmailAndPassword,
     createUserWithEmailAndPass,
@@ -43,16 +45,8 @@ const AuthProvider = ({childrebn}) => {
 
     return (
         <div>
-            	{loading && (
-				<div className=" w-full z-50 absolute top-1/2 items-center">
-					<div className="flex justify-center items-center">
-						<div
-							className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-							role="status"></div>
-					</div>
-				</div>
-			)}
-            <AuthContext.Provider value={authInfo}>{childrebn}</AuthContext.Provider>
+            	
+                <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
         </div>
     );
 };
