@@ -3,6 +3,7 @@ import Root from "../layout/Root";
 import Home from "../page/Home/Footer/Navebar/Home"
 import Login from "../component/Sining/Login";
 import Sining from "../component/Sining/Sining";
+import Card from "../page/Home/Footer/Navebar/Card";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
          {
           path:'/sining',
           element:<Sining></Sining>
+         },
+         {
+            path:'/card',
+            element:<Card></Card>
          }
         ]
     }
